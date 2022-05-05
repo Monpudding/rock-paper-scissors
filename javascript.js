@@ -1,8 +1,4 @@
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection))
-console.log(playerSelection)
-console.log(computerSelection)
+console.log(game());
 
 function playRound(playerSelection, computerSelection){
     let result;
@@ -30,6 +26,11 @@ function playRound(playerSelection, computerSelection){
     return result;
 }
 
+function playerPlay(){
+    let input = prompt("pick either rock, paper, or scissor!: ")
+    return input.toLowerCase();
+}
+
 function computerPlay(){
     let max = 3;
     let result;
@@ -43,5 +44,22 @@ function computerPlay(){
         break;
     }
     return result;
+}
+
+function game(){
+    let score = 0;
+    for(let i = 0; i < 5; i++){
+        const playerSelection = playerPlay();
+        const computerSelection = computerPlay();
+
+        console.log(playRound(playerSelection, computerSelection))
+        console.log(playerSelection)
+        console.log(computerSelection)
+
+        if ((playRound(playerSelection, computerSelection) === 'You Win!')){
+            score++;
+        }
+    }
+    return score;
 }
 
